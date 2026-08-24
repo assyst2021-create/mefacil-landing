@@ -4,44 +4,41 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MeFácil — Aprende lo que quieras. Enseña lo que sabes.</title>
-<script src="./support.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f8fafc; color: #101826; overflow-x: hidden; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(196,180,0,.5)} 70%{box-shadow:0 0 0 14px rgba(196,180,0,0)} 100%{box-shadow:0 0 0 0 rgba(196,180,0,0)} }
+  .btn { display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;border-radius:12px;border:1.5px solid transparent;cursor:pointer;transition:transform .14s ease,filter .18s ease;font-family:inherit;font-size:15px; }
+  .btn:hover { transform:translateY(-2px);filter:brightness(1.07); }
+  .card { transition:transform .25s ease,box-shadow .25s ease; }
+  .card:hover { transform:translateY(-5px);box-shadow:0 20px 48px rgba(7,39,64,0.14); }
+  .faq-item { border-bottom:1px solid #e5e7eb; }
+  .faq-q { display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;user-select:none; }
+  .faq-q:hover { background:rgba(28,121,180,0.03); }
+  .faq-q span { font-weight:700;font-size:15px; }
+  .faq-icon { font-size:22px;font-weight:300;color:#9ca3af;transition:transform .2s;flex-shrink:0; }
+  .faq-a { max-height:0;overflow:hidden;transition:max-height .35s ease,padding .25s ease; }
+  .faq-a p { margin:0;font-size:14px;color:#4b5565;line-height:1.65;padding:0 24px 18px; }
+  .faq-item.open .faq-icon { transform:rotate(45deg);color:#1c79b4; }
+  .faq-item.open .faq-a { max-height:300px; }
+  @media (max-width:760px) {
+    .two-col { grid-template-columns:1fr !important; }
+    .hero-btns { flex-direction:column !important; align-items:stretch !important; }
+    .stats-row { gap:20px !important; }
+    .stats-div { display:none !important; }
+  }
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f8fafc; color: #101826; overflow-x: hidden; margin: 0; }
-    a { color: inherit; text-decoration: none; }
-    @keyframes floatSlow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-    @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(28,121,180,.4)} 70%{box-shadow:0 0 0 14px rgba(28,121,180,0)} 100%{box-shadow:0 0 0 0 rgba(28,121,180,0)} }
-    .btn-cta { display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;border-radius:12px;border:1.5px solid transparent;cursor:pointer;transition:transform .14s ease,filter .18s ease;font-family:inherit; }
-    .btn-cta:hover { transform:translateY(-2px);filter:brightness(1.06); }
-    .btn-cta:active { transform:translateY(0) scale(0.98);filter:brightness(0.96); }
-    .card-hover { transition:transform .25s cubic-bezier(.21,.91,.4,.97),box-shadow .25s ease; }
-    .card-hover:hover { transform:translateY(-6px);box-shadow:0 20px 48px rgba(7,39,64,0.14); }
-    .faq-row { cursor:pointer;transition:background .2s; }
-    .faq-row:hover { background:rgba(28,121,180,0.03); }
-    .rev { opacity:0;transform:translateY(24px);transition:opacity .75s cubic-bezier(.21,.91,.4,.97),transform .75s cubic-bezier(.21,.91,.4,.97); }
-    .rev.vis { opacity:1;transform:translateY(0); }
-    ::selection { background:#1c79b4;color:#fff; }
-    ::-webkit-scrollbar { width:8px; }
-    ::-webkit-scrollbar-thumb { background:rgba(28,121,180,0.2);border-radius:8px; }
-    @media (max-width:760px) {
-      .two-col { grid-template-columns:1fr !important; }
-      .three-col { grid-template-columns:1fr !important; }
-      .hero-btns { flex-direction:column !important; align-items:stretch !important; }
-    }
-  </style>
-</helmet>
 
-<!-- ░░ NAV ░░ -->
-<header style="position:sticky;top:0;z-index:40;background:rgba(248,250,252,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(16,24,38,0.08)">
+<!-- NAV -->
+<header style="position:sticky;top:0;z-index:40;background:rgba(248,250,252,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(16,24,38,0.08)">
   <div style="max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between">
     <div style="display:flex;align-items:center;gap:10px">
-      <div style="width:40px;height:40px;background:linear-gradient(135deg,#1c79b4,#0c3a57);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:18px;color:white;flex-shrink:0">M</div>
+      <div style="width:40px;height:40px;background:linear-gradient(135deg,#1c79b4,#0c3a57);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:20px;color:white;flex-shrink:0">M</div>
       <div style="line-height:1.1">
         <div style="font-weight:900;font-size:17px;letter-spacing:-.3px">Me<span style="color:#1c79b4">Fácil</span></div>
         <div style="font-size:10px;color:#94a3b8;letter-spacing:.5px;text-transform:uppercase">Plataforma Educativa</div>
@@ -52,69 +49,64 @@
         <svg width="16" height="16" viewBox="0 0 32 32" fill="#25D366"><path d="M16.004 3C9.376 3 4 8.373 4 15c0 2.39.701 4.617 1.912 6.49L4 29l7.7-1.875A11.93 11.93 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.7c-1.96 0-3.84-.524-5.47-1.516l-.392-.232-4.57 1.113 1.142-4.46-.255-.406A9.62 9.62 0 0 1 5.3 15c0-5.91 4.79-10.7 10.704-10.7S26.7 9.09 26.7 15 21.918 24.7 16.004 24.7z"/><path d="M22.05 18.105c-.33-.165-1.955-.965-2.258-1.075-.303-.11-.523-.165-.744.165-.22.33-.853 1.075-1.046 1.296-.193.22-.385.248-.715.083-.33-.165-1.392-.513-2.652-1.637-.98-.875-1.642-1.955-1.835-2.285-.193-.33-.02-.508.145-.673.149-.148.33-.385.495-.578.165-.193.22-.33.33-.55.11-.22.055-.413-.027-.578-.083-.165-.744-1.793-1.02-2.456-.27-.65-.543-.562-.744-.572l-.633-.011c-.22 0-.578.083-.881.413-.303.33-1.156 1.13-1.156 2.756 0 1.626 1.184 3.198 1.349 3.418.165.22 2.331 3.56 5.648 4.992.789.34 1.405.543 1.885.695.792.252 1.514.217 2.084.132.636-.095 1.955-.8 2.231-1.572.275-.773.275-1.435.193-1.572-.083-.138-.303-.22-.633-.385z"/></svg>
         Contáctanos
       </a>
-      <a href="https://academia.mefacil.com" class="btn-cta" style="font-size:13px;padding:10px 20px;background:#1c79b4;color:white;box-shadow:0 4px 14px rgba(28,121,180,.28)">Ingresar →</a>
+      <a href="https://academia.mefacil.com" class="btn" style="padding:10px 20px;background:#1c79b4;color:white;box-shadow:0 4px 14px rgba(28,121,180,.28)">Ingresar →</a>
     </div>
   </div>
 </header>
 
-<!-- ░░ HERO ░░ -->
-<section style="padding:88px 24px 80px;background:linear-gradient(160deg,#0c3a57 0%,#1c79b4 60%,#0f5082 100%);position:relative;overflow:hidden">
-  <div style="max-width:960px;margin:0 auto;text-align:center;position:relative">
-    <div class="rev" style="display:inline-flex;align-items:center;gap:8px;background:rgba(196,180,0,0.15);border:1px solid rgba(196,180,0,0.35);border-radius:999px;padding:7px 18px;margin-bottom:24px">
+<!-- HERO -->
+<section style="padding:88px 24px 80px;background:linear-gradient(160deg,#0c3a57 0%,#1c79b4 60%,#0f5082 100%)">
+  <div style="max-width:960px;margin:0 auto;text-align:center">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(196,180,0,0.15);border:1px solid rgba(196,180,0,0.35);border-radius:999px;padding:7px 18px;margin-bottom:24px">
       <span style="width:7px;height:7px;border-radius:50%;background:#c4b400;display:inline-block;animation:pulse 2s infinite"></span>
-      <span style="color:#c4b400;font-size:12px;font-weight:700;letter-spacing:.5px">LA PLATAFORMA QUE COLOMBIA NECESITABA</span>
+      <span style="color:#c4b400;font-size:12px;font-weight:700;letter-spacing:.5px">LA PLATAFORMA EDUCATIVA QUE COLOMBIA NECESITABA</span>
     </div>
-    <h1 class="rev" style="font-size:clamp(32px,5vw,58px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin:0 0 18px;color:white">
+    <h1 style="font-size:clamp(32px,5vw,58px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin:0 0 18px;color:white">
       Aprende lo que quieras.<br><span style="color:#c4b400">Enseña lo que sabes.</span>
     </h1>
-    <p class="rev" style="font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,0.8);max-width:580px;margin:0 auto 44px;line-height:1.7">
+    <p style="font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,0.8);max-width:580px;margin:0 auto 44px;line-height:1.7">
       MeFácil es la plataforma educativa donde cualquier persona puede aprender cualquier tema — y cualquier experto puede crear su propia escuela online.
     </p>
 
-    <!-- DOS GRANDES BOTONES CTA -->
-    <div class="rev hero-btns" style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap">
-      <!-- ESTUDIANTE -->
+    <!-- DOS CTAs -->
+    <div class="hero-btns" style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap">
       <a href="https://academia.mefacil.com" target="_blank" rel="noopener noreferrer"
-        style="background:white;border-radius:18px;padding:28px 36px;text-align:left;max-width:300px;width:100%;display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 60px rgba(0,0,0,0.25);border:2px solid rgba(255,255,255,0.1);transition:transform .2s,box-shadow .2s"
-        onMouseOver="this.style.transform='translateY(-4px)';this.style.boxShadow='0 28px 70px rgba(0,0,0,0.35)'"
-        onMouseOut="this.style.transform='none';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.25)'">
+        class="card"
+        style="background:white;border-radius:18px;padding:28px 32px;text-align:left;width:280px;display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 60px rgba(0,0,0,0.25)">
         <div style="font-size:36px">🎓</div>
         <div>
           <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px">Para estudiantes</div>
           <div style="font-size:20px;font-weight:900;color:#101826;line-height:1.2">Quiero<br>educarme</div>
         </div>
-        <p style="font-size:13px;color:#4b5565;line-height:1.6;margin:0">Explora miles de cursos en cualquier área. Aprende a tu ritmo con expertos reales.</p>
-        <div style="display:inline-flex;align-items:center;gap:6px;background:#1c79b4;color:white;border-radius:8px;padding:10px 18px;font-size:13px;font-weight:700;align-self:flex-start">Ver cursos →</div>
+        <p style="font-size:13px;color:#4b5565;line-height:1.6;margin:0">Explora cursos en cualquier área. Aprende a tu ritmo con expertos reales.</p>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#1c79b4;color:white;border-radius:8px;padding:10px 18px;font-size:13px;font-weight:700">Ver cursos →</div>
       </a>
 
-      <!-- ENTRENADOR -->
-      <a href="https://wa.me/573059234214?text=Hola%2C%20quiero%20crear%20mi%20espacio%20educativo%20en%20MeFácil"
-        target="_blank" rel="noopener noreferrer"
-        style="background:linear-gradient(160deg,#c4b400,#a09200);border-radius:18px;padding:28px 36px;text-align:left;max-width:300px;width:100%;display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 60px rgba(196,180,0,0.35);transition:transform .2s,box-shadow .2s"
-        onMouseOver="this.style.transform='translateY(-4px)';this.style.boxShadow='0 28px 70px rgba(196,180,0,0.45)'"
-        onMouseOut="this.style.transform='none';this.style.boxShadow='0 20px 60px rgba(196,180,0,0.35)'">
+      <a href="https://wa.me/573059234214?text=Hola%2C%20quiero%20crear%20mi%20espacio%20educativo%20en%20MeFácil" target="_blank" rel="noopener noreferrer"
+        class="card"
+        style="background:linear-gradient(160deg,#c4b400,#a09200);border-radius:18px;padding:28px 32px;text-align:left;width:280px;display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 60px rgba(196,180,0,0.35)">
         <div style="font-size:36px">🏆</div>
         <div>
           <div style="font-size:11px;font-weight:800;color:rgba(28,43,0,0.6);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px">Para expertos</div>
           <div style="font-size:20px;font-weight:900;color:#1c2b00;line-height:1.2">Quiero<br>enseñar</div>
         </div>
         <p style="font-size:13px;color:rgba(28,43,0,0.75);line-height:1.6;margin:0">Crea tu propia escuela online. Lleva tus estudiantes y genera ingresos con tu conocimiento.</p>
-        <div style="display:inline-flex;align-items:center;gap:6px;background:#0c3a57;color:white;border-radius:8px;padding:10px 18px;font-size:13px;font-weight:700;align-self:flex-start">Comenzar gratis →</div>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#0c3a57;color:white;border-radius:8px;padding:10px 18px;font-size:13px;font-weight:700">Comenzar gratis →</div>
       </a>
     </div>
 
     <!-- STATS -->
-    <div class="rev" style="display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-top:52px">
+    <div class="stats-row" style="display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-top:52px">
       <div style="text-align:center">
         <div style="font-size:28px;font-weight:900;color:white">+1.000</div>
         <div style="font-size:12px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:.07em">Estudiantes activos</div>
       </div>
-      <div style="width:1px;background:rgba(255,255,255,0.15)"></div>
+      <div class="stats-div" style="width:1px;background:rgba(255,255,255,0.15)"></div>
       <div style="text-align:center">
         <div style="font-size:28px;font-weight:900;color:white">+50</div>
         <div style="font-size:12px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:.07em">Cursos disponibles</div>
       </div>
-      <div style="width:1px;background:rgba(255,255,255,0.15)"></div>
+      <div class="stats-div" style="width:1px;background:rgba(255,255,255,0.15)"></div>
       <div style="text-align:center">
         <div style="font-size:28px;font-weight:900;color:white">⭐ 4.9/5</div>
         <div style="font-size:12px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:.07em">Calificación promedio</div>
@@ -123,67 +115,31 @@
   </div>
 </section>
 
-<!-- ░░ CATEGORÍAS ░░ -->
+<!-- CATEGORÍAS -->
 <section style="padding:90px 24px;max-width:1200px;margin:0 auto">
-  <div class="rev" style="text-align:center;margin-bottom:52px">
+  <div style="text-align:center;margin-bottom:52px">
     <p style="color:#1c79b4;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin:0 0 12px">Todo el conocimiento en un solo lugar</p>
     <h2 style="font-size:clamp(26px,3.5vw,38px);font-weight:800;margin:0 0 14px;letter-spacing:-.5px">Aprende cualquier cosa</h2>
     <p style="color:#4b5565;font-size:15px;max-width:520px;margin:0 auto">Desde seguridad industrial hasta marketing digital. Si existe el conocimiento, en MeFácil lo encontrás.</p>
   </div>
-  <div class="three-col" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px">
-    <div class="rev card-hover" data-delay="0" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center">
-      <div style="font-size:32px;margin-bottom:10px">🦺</div>
-      <div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:4px">Seguridad SST</div>
-      <div style="font-size:12px;color:#94a3b8">SG-SST · ARL · Matrices</div>
-    </div>
-    <div class="rev card-hover" data-delay="60" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center">
-      <div style="font-size:32px;margin-bottom:10px">🌿</div>
-      <div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:4px">Ambiental</div>
-      <div style="font-size:12px;color:#94a3b8">ISO 14001 · Residuos</div>
-    </div>
-    <div class="rev card-hover" data-delay="120" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center">
-      <div style="font-size:32px;margin-bottom:10px">✅</div>
-      <div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:4px">Calidad</div>
-      <div style="font-size:12px;color:#94a3b8">ISO 9001 · PHVA</div>
-    </div>
-    <div class="rev card-hover" data-delay="180" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center">
-      <div style="font-size:32px;margin-bottom:10px">👥</div>
-      <div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:4px">Gestión Humana</div>
-      <div style="font-size:12px;color:#94a3b8">Talento · Bienestar</div>
-    </div>
-    <div class="rev card-hover" data-delay="240" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center">
-      <div style="font-size:32px;margin-bottom:10px">🚦</div>
-      <div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:4px">Seguridad Vial</div>
-      <div style="font-size:12px;color:#94a3b8">PESV · Resolución 40595</div>
-    </div>
-    <div class="rev card-hover" data-delay="300" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center">
-      <div style="font-size:32px;margin-bottom:10px">💼</div>
-      <div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:4px">Administración</div>
-      <div style="font-size:12px;color:#94a3b8">Gestión · Finanzas</div>
-    </div>
-    <div class="rev card-hover" data-delay="360" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center">
-      <div style="font-size:32px;margin-bottom:10px">📱</div>
-      <div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:4px">Marketing Digital</div>
-      <div style="font-size:12px;color:#94a3b8">Redes · Contenido</div>
-    </div>
-    <div class="rev card-hover" data-delay="420" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center">
-      <div style="font-size:32px;margin-bottom:10px">🖥️</div>
-      <div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:4px">Tecnología</div>
-      <div style="font-size:12px;color:#94a3b8">IA · Programación</div>
-    </div>
-    <div class="rev card-hover" data-delay="480" style="background:linear-gradient(135deg,#1c79b4,#0c3a57);border-radius:16px;padding:24px 20px;text-align:center">
-      <div style="font-size:32px;margin-bottom:10px">✨</div>
-      <div style="font-weight:700;font-size:14px;color:white;margin-bottom:4px">Y mucho más</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.6)">Nuevos cursos cada mes</div>
-    </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:16px">
+    <div class="card" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center"><div style="font-size:32px;margin-bottom:10px">🦺</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">Seguridad SST</div><div style="font-size:12px;color:#94a3b8">SG-SST · ARL · Matrices</div></div>
+    <div class="card" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center"><div style="font-size:32px;margin-bottom:10px">🌿</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">Ambiental</div><div style="font-size:12px;color:#94a3b8">ISO 14001 · Residuos</div></div>
+    <div class="card" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center"><div style="font-size:32px;margin-bottom:10px">✅</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">Calidad</div><div style="font-size:12px;color:#94a3b8">ISO 9001 · PHVA</div></div>
+    <div class="card" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center"><div style="font-size:32px;margin-bottom:10px">👥</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">Gestión Humana</div><div style="font-size:12px;color:#94a3b8">Talento · Bienestar</div></div>
+    <div class="card" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center"><div style="font-size:32px;margin-bottom:10px">🚦</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">Seguridad Vial</div><div style="font-size:12px;color:#94a3b8">PESV · Normativa</div></div>
+    <div class="card" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center"><div style="font-size:32px;margin-bottom:10px">💼</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">Administración</div><div style="font-size:12px;color:#94a3b8">Gestión · Finanzas</div></div>
+    <div class="card" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center"><div style="font-size:32px;margin-bottom:10px">📱</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">Marketing Digital</div><div style="font-size:12px;color:#94a3b8">Redes · Contenido</div></div>
+    <div class="card" style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:24px 20px;text-align:center"><div style="font-size:32px;margin-bottom:10px">🖥️</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">Tecnología</div><div style="font-size:12px;color:#94a3b8">IA · Programación</div></div>
+    <div class="card" style="background:linear-gradient(135deg,#1c79b4,#0c3a57);border-radius:16px;padding:24px 20px;text-align:center"><div style="font-size:32px;margin-bottom:10px">✨</div><div style="font-weight:700;font-size:14px;color:white;margin-bottom:4px">Y mucho más</div><div style="font-size:12px;color:rgba(255,255,255,0.6)">Nuevos cursos cada mes</div></div>
   </div>
 </section>
 
-<!-- ░░ PARA ESTUDIANTES ░░ -->
+<!-- PARA ESTUDIANTES -->
 <section style="padding:90px 24px;background:white">
   <div style="max-width:1100px;margin:0 auto">
     <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
-      <div class="rev">
+      <div>
         <div style="display:inline-block;background:#f0f7ff;border:1px solid #c3ddf5;border-radius:999px;padding:6px 16px;margin-bottom:20px">
           <span style="color:#1c79b4;font-size:12px;font-weight:700;letter-spacing:.05em">🎓 PARA ESTUDIANTES</span>
         </div>
@@ -195,10 +151,10 @@
           <div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:10px;background:#f0f7ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">💬</div><span style="font-size:14px;color:#374151">Foro y contacto directo con tu entrenador</span></div>
           <div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:10px;background:#f0f7ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">📅</div><span style="font-size:14px;color:#374151">Clases en vivo incluidas en muchos cursos</span></div>
         </div>
-        <a href="https://academia.mefacil.com" target="_blank" rel="noopener noreferrer" class="btn-cta" style="font-size:15px;padding:16px 32px;background:#1c79b4;color:white;box-shadow:0 4px 18px rgba(28,121,180,.3)">Explorar cursos →</a>
+        <a href="https://academia.mefacil.com" target="_blank" rel="noopener noreferrer" class="btn" style="padding:16px 32px;background:#1c79b4;color:white;box-shadow:0 4px 18px rgba(28,121,180,.3)">Explorar cursos →</a>
       </div>
-      <div class="rev" data-delay="100" style="background:linear-gradient(160deg,#0c3a57,#1c79b4);border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:16px">
-        <div style="font-size:13px;font-weight:700;color:#c4b400;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">¿Cómo funciona?</div>
+      <div style="background:linear-gradient(160deg,#0c3a57,#1c79b4);border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:20px">
+        <div style="font-size:13px;font-weight:700;color:#c4b400;text-transform:uppercase;letter-spacing:.08em">¿Cómo funciona?</div>
         <div style="display:flex;gap:14px;align-items:flex-start">
           <div style="width:32px;height:32px;border-radius:50%;background:#c4b400;display:flex;align-items:center;justify-content:center;font-weight:900;color:#3a3300;font-size:14px;flex-shrink:0">1</div>
           <div><div style="color:white;font-weight:700;font-size:14px;margin-bottom:3px">Solicita tu acceso</div><div style="color:rgba(255,255,255,.65);font-size:13px;line-height:1.5">Contáctanos por WhatsApp o regístrate directamente.</div></div>
@@ -216,88 +172,68 @@
   </div>
 </section>
 
-<!-- ░░ PARA ENTRENADORES ░░ -->
+<!-- PARA ENTRENADORES -->
 <section style="padding:90px 24px;background:#fffef5">
   <div style="max-width:1100px;margin:0 auto">
     <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
-      <div class="rev" style="background:linear-gradient(160deg,#c4b400,#a09200);border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:16px">
-        <div style="font-size:13px;font-weight:700;color:#1c2b00;text-transform:uppercase;letter-spacing:.08em;opacity:.7;margin-bottom:4px">Tu beneficio como entrenador</div>
-        <div style="display:flex;gap:14px;align-items:flex-start">
-          <div style="width:32px;height:32px;border-radius:50%;background:#0c3a57;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">💰</div>
-          <div><div style="color:#1c2b00;font-weight:700;font-size:14px;margin-bottom:3px">Tu escuela, tus ingresos</div><div style="color:rgba(28,43,0,.7);font-size:13px;line-height:1.5">Cobra a tus estudiantes como tú decidas. La plataforma es tuya.</div></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:flex-start">
-          <div style="width:32px;height:32px;border-radius:50%;background:#0c3a57;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🛠️</div>
-          <div><div style="color:#1c2b00;font-weight:700;font-size:14px;margin-bottom:3px">Todo listo para ti</div><div style="color:rgba(28,43,0,.7);font-size:13px;line-height:1.5">Videos, foro, clases en vivo, progreso, evaluaciones. Sin tecnicismos.</div></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:flex-start">
-          <div style="width:32px;height:32px;border-radius:50%;background:#0c3a57;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">📊</div>
-          <div><div style="color:#1c2b00;font-weight:700;font-size:14px;margin-bottom:3px">Panel de control total</div><div style="color:rgba(28,43,0,.7);font-size:13px;line-height:1.5">Gestiona estudiantes, contenido, pagos y certificados desde un solo lugar.</div></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:flex-start">
-          <div style="width:32px;height:32px;border-radius:50%;background:#0c3a57;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🌎</div>
-          <div><div style="color:#1c2b00;font-weight:700;font-size:14px;margin-bottom:3px">Sin fronteras</div><div style="color:rgba(28,43,0,.7);font-size:13px;line-height:1.5">Tus estudiantes pueden estar en cualquier parte del mundo.</div></div>
-        </div>
+      <div style="background:linear-gradient(160deg,#c4b400,#a09200);border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:16px">
+        <div style="font-size:13px;font-weight:700;color:rgba(28,43,0,0.6);text-transform:uppercase;letter-spacing:.08em">Tu beneficio como entrenador</div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:50%;background:#0c3a57;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">💰</div><div><div style="color:#1c2b00;font-weight:700;font-size:14px;margin-bottom:3px">Tu escuela, tus ingresos</div><div style="color:rgba(28,43,0,.7);font-size:13px;line-height:1.5">Cobra a tus estudiantes como tú decidas. La plataforma es tuya.</div></div></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:50%;background:#0c3a57;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🛠️</div><div><div style="color:#1c2b00;font-weight:700;font-size:14px;margin-bottom:3px">Todo listo para ti</div><div style="color:rgba(28,43,0,.7);font-size:13px;line-height:1.5">Videos, foro, clases en vivo, progreso, evaluaciones. Sin tecnicismos.</div></div></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:50%;background:#0c3a57;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">📊</div><div><div style="color:#1c2b00;font-weight:700;font-size:14px;margin-bottom:3px">Panel de control total</div><div style="color:rgba(28,43,0,.7);font-size:13px;line-height:1.5">Gestiona estudiantes, contenido, pagos y certificados desde un solo lugar.</div></div></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:50%;background:#0c3a57;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🌎</div><div><div style="color:#1c2b00;font-weight:700;font-size:14px;margin-bottom:3px">Sin fronteras</div><div style="color:rgba(28,43,0,.7);font-size:13px;line-height:1.5">Tus estudiantes pueden estar en cualquier parte del mundo.</div></div></div>
       </div>
-      <div class="rev" data-delay="100">
+      <div>
         <div style="display:inline-block;background:#fffbeb;border:1px solid rgba(196,180,0,0.4);border-radius:999px;padding:6px 16px;margin-bottom:20px">
           <span style="color:#92740a;font-size:12px;font-weight:700;letter-spacing:.05em">🏆 PARA ENTRENADORES</span>
         </div>
         <h2 style="font-size:clamp(24px,3vw,36px);font-weight:800;margin:0 0 16px;line-height:1.2">Tu conocimiento vale.<br>Empieza a cobrarlo.</h2>
-        <p style="color:#4b5565;font-size:15px;line-height:1.75;margin:0 0 28px">Si eres profesional, técnico, docente o experto en cualquier tema — MeFácil te da la infraestructura para montar tu propia academia online en minutos. Sin costos de setup. Sin complicaciones.</p>
-        <!-- Diferenciadores clave -->
-        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px">
+        <p style="color:#4b5565;font-size:15px;line-height:1.75;margin:0 0 24px">Si eres profesional, técnico, docente o experto en cualquier tema — MeFácil te da la infraestructura para montar tu propia academia online. Sin costos de setup. Sin complicaciones.</p>
+
+        <!-- Diferenciadores -->
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
           <div style="display:flex;align-items:flex-start;gap:12px;background:#fffbeb;border:1px solid rgba(196,180,0,0.25);border-radius:10px;padding:14px 16px">
-            <span style="font-size:20px;flex-shrink:0">💰</span>
+            <span style="font-size:18px;flex-shrink:0">💰</span>
             <div><div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:2px">Cobras directo a tus estudiantes</div><div style="font-size:13px;color:#4b5565;line-height:1.5">Sin comisiones. Sin intermediarios. Tus ingresos llegan completos a ti.</div></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:12px;background:#fffbeb;border:1px solid rgba(196,180,0,0.25);border-radius:10px;padding:14px 16px">
-            <span style="font-size:20px;flex-shrink:0">🔐</span>
+            <span style="font-size:18px;flex-shrink:0">🔐</span>
             <div><div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:2px">Control total de tu comunidad</div><div style="font-size:13px;color:#4b5565;line-height:1.5">Tú decides quién entra, cuánto paga y cuándo. Tu espacio, tus reglas.</div></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:12px;background:#fffbeb;border:1px solid rgba(196,180,0,0.25);border-radius:10px;padding:14px 16px">
-            <span style="font-size:20px;flex-shrink:0">🏆</span>
-            <div><div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:2px">Cero competencia dentro de tu espacio</div><div style="font-size:13px;color:#4b5565;line-height:1.5">Tus estudiantes no ven cursos de nadie más. Solo el tuyo. Sin distracciones.</div></div>
+            <span style="font-size:18px;flex-shrink:0">🏆</span>
+            <div><div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:2px">Cero competencia dentro de tu espacio</div><div style="font-size:13px;color:#4b5565;line-height:1.5">Tus estudiantes no ven cursos de nadie más. Solo el tuyo.</div></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:12px;background:#fffbeb;border:1px solid rgba(196,180,0,0.25);border-radius:10px;padding:14px 16px">
-            <span style="font-size:20px;flex-shrink:0">🤝</span>
+            <span style="font-size:18px;flex-shrink:0">🤝</span>
             <div><div style="font-weight:700;font-size:14px;color:#101826;margin-bottom:2px">Relación directa con cada estudiante</div><div style="font-size:13px;color:#4b5565;line-height:1.5">Foro, mensajes y seguimiento personalizado. Tú conoces a tu comunidad.</div></div>
           </div>
         </div>
-        <div style="background:#fef3c7;border-left:4px solid #c4b400;border-radius:0 10px 10px 0;padding:14px 18px;margin-bottom:28px">
+
+        <div style="background:#fef3c7;border-left:4px solid #c4b400;border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:24px">
           <div style="font-size:13px;font-weight:700;color:#92400e">Solo pagas un mantenimiento anual.</div>
           <div style="font-size:12.5px;color:#78350f;margin-top:3px">Sin comisiones por venta. Sin sorpresas. Tus ingresos son tuyos.</div>
         </div>
-        <a href="https://wa.me/573059234214?text=Hola%2C%20quiero%20crear%20mi%20espacio%20educativo%20en%20MeFácil" target="_blank" rel="noopener noreferrer" class="btn-cta" style="font-size:15px;padding:16px 32px;background:#c4b400;color:#3a3300;box-shadow:0 4px 18px rgba(196,180,0,.35)">Quiero enseñar en MeFácil →</a>
+        <a href="https://wa.me/573059234214?text=Hola%2C%20quiero%20crear%20mi%20espacio%20educativo%20en%20MeFácil" target="_blank" rel="noopener noreferrer" class="btn" style="padding:16px 32px;background:#c4b400;color:#3a3300;box-shadow:0 4px 18px rgba(196,180,0,.35)">Quiero enseñar en MeFácil →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ░░ HUELLITAS EN ACCIÓN ░░ -->
-<section style="padding:90px 24px;background:linear-gradient(160deg,#fffef5,#f0f9f0);position:relative;overflow:hidden">
-  <svg width="100%" height="100%" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;opacity:.06;pointer-events:none" aria-hidden="true">
-    <g transform="translate(120,200) rotate(-15)"><ellipse cx="22" cy="32" rx="14" ry="10" fill="#1c79b4"/><ellipse cx="8" cy="18" rx="7" ry="5" fill="#1c79b4"/><ellipse cx="22" cy="14" rx="7" ry="5" fill="#1c79b4"/><ellipse cx="36" cy="18" rx="7" ry="5" fill="#1c79b4"/></g>
-    <g transform="translate(820,180) rotate(10)"><ellipse cx="22" cy="32" rx="14" ry="10" fill="#c4b400"/><ellipse cx="8" cy="18" rx="7" ry="5" fill="#c4b400"/><ellipse cx="22" cy="14" rx="7" ry="5" fill="#c4b400"/><ellipse cx="36" cy="18" rx="7" ry="5" fill="#c4b400"/></g>
-  </svg>
-  <div class="two-col" style="max-width:1040px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:54px;align-items:center;position:relative">
-    <div class="rev" style="display:flex;justify-content:center">
-      <div style="max-width:380px;width:100%;background:#fffef5;border-radius:14px;overflow:hidden">
-        <img src="uploads/pasted-1782064604834-0.png" alt="Huellitas en Acción" style="width:100%;height:auto;display:block;mix-blend-mode:multiply" />
-      </div>
+<!-- HUELLITAS EN ACCIÓN -->
+<section style="padding:90px 24px;background:linear-gradient(160deg,#fffef5,#f0f9f0)">
+  <div class="two-col" style="max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:54px;align-items:center">
+    <div style="display:flex;justify-content:center">
+      <img src="uploads/pasted-1782064604834-0.png" alt="Huellitas en Acción" style="max-width:320px;width:100%;height:auto;display:block;mix-blend-mode:multiply;border-radius:12px" />
     </div>
-    <div class="rev" data-delay="100">
-      <div style="margin-bottom:16px;line-height:1;text-align:center">
-        <div style="font-family:'Fredoka One',cursive;font-size:clamp(38px,4.8vw,56px);color:#1c79b4;letter-spacing:1px;line-height:1">HUELLITAS</div>
-        <div style="font-family:'Fredoka One',cursive;font-size:clamp(30px,3.8vw,44px);color:#c4b400;letter-spacing:1px;line-height:1">EN ACCIÓN</div>
+    <div>
+      <div style="margin-bottom:16px;text-align:center">
+        <div style="font-family:'Fredoka One',cursive;font-size:clamp(38px,4.8vw,52px);color:#1c79b4;letter-spacing:1px;line-height:1">HUELLITAS</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:clamp(30px,3.8vw,42px);color:#c4b400;letter-spacing:1px;line-height:1">EN ACCIÓN</div>
       </div>
-      <p style="color:#1c79b4;font-weight:700;font-size:15px;line-height:1.55;margin:0 0 10px;text-align:center">
-        Huellitas es nuestra iniciativa de donación solidaria: aprender también es dar.
-      </p>
-      <p style="font-size:14px;color:#4b5565;line-height:1.65;margin:0 0 20px;text-align:center">
-        Como empresa, destinamos parte de nuestros ingresos a alimentar y cuidar perros y gatos en condición de abandono. Al hacer parte de MeFácil, indirectamente contribuyes a esta causa. Nosotros nos encargamos de todo.
-      </p>
-      <div style="border:2px solid #1c79b4;border-radius:12px;padding:16px 20px;text-align:center;margin-bottom:20px">
+      <p style="color:#1c79b4;font-weight:700;font-size:15px;line-height:1.55;margin:0 0 10px;text-align:center">Huellitas es nuestra iniciativa de donación solidaria: aprender también es dar.</p>
+      <p style="font-size:14px;color:#4b5565;line-height:1.65;margin:0 0 20px;text-align:center">Como empresa, destinamos parte de nuestros ingresos a alimentar y cuidar perros y gatos en condición de abandono. Al hacer parte de MeFácil, indirectamente contribuyes a esta causa.</p>
+      <div style="border:2px solid #1c79b4;border-radius:12px;padding:16px 20px;text-align:center;margin-bottom:16px">
         <p style="margin:0;font-size:15px;font-weight:800;color:#101826;line-height:1.4;text-transform:uppercase">Cuando tú creces,<br>ellos también ganan.</p>
       </div>
       <div style="text-align:center;font-size:12px;font-style:italic;color:#9ca3af">Gracias por ser parte de esta causa que alimenta vidas y corazones.</div>
@@ -305,85 +241,71 @@
   </div>
 </section>
 
-<!-- ░░ FAQ ░░ -->
-<section style="padding:90px 24px;max-width:740px;margin:0 auto">
-  <div class="rev" style="text-align:center;margin-bottom:48px">
-    <p style="color:#1c79b4;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin:0 0 12px">Resolvemos tus dudas</p>
-    <h2 style="font-size:clamp(24px,3vw,34px);font-weight:800;margin:0;letter-spacing:-.5px">Preguntas frecuentes</h2>
-  </div>
-  <div style="background:white;border:1px solid rgba(16,24,38,0.09);border-radius:16px;overflow:hidden">
-    <sc-for list="{{ faqs }}" as="faq" hint-placeholder-count="5">
-      <div class="faq-row" onClick="{{ faq.toggle }}" style="border-bottom:1px solid rgba(16,24,38,0.09);padding:20px 24px">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
-          <span style="font-weight:700;font-size:15px">{{ faq.q }}</span>
-          <span style="{{ faq.iconStyle }}">+</span>
-        </div>
-        <div style="{{ faq.bodyStyle }}">
-          <p style="margin:14px 0 0;font-size:14px;color:#4b5565;line-height:1.6">{{ faq.a }}</p>
-        </div>
+<!-- FAQ -->
+<section style="padding:90px 24px">
+  <div style="max-width:740px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:48px">
+      <p style="color:#1c79b4;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin:0 0 12px">Resolvemos tus dudas</p>
+      <h2 style="font-size:clamp(24px,3vw,34px);font-weight:800;margin:0;letter-spacing:-.5px">Preguntas frecuentes</h2>
+    </div>
+    <div style="background:white;border:1px solid rgba(16,24,38,0.09);border-radius:16px;overflow:hidden" id="faq">
+      <div class="faq-item">
+        <div class="faq-q"><span>¿Qué tipo de cursos puedo encontrar en MeFácil?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>De todo. SST, Ambiental, Calidad, Gestión Humana, Seguridad Vial, Marketing, Tecnología, Administración y mucho más. Si un experto sabe algo y quiere enseñarlo, lo puede hacer aquí.</p></div>
       </div>
-    </sc-for>
-  </div>
-</section>
-
-<!-- ░░ CTA FINAL ░░ -->
-<section style="padding:90px 24px;background:linear-gradient(135deg,#0c3a57,#1c79b4);text-align:center">
-  <div class="rev" style="max-width:640px;margin:0 auto">
-    <div style="font-size:40px;margin-bottom:16px">🚀</div>
-    <h2 style="font-size:clamp(26px,3.5vw,40px);font-weight:900;color:white;margin:0 0 14px;letter-spacing:-.5px">¿Listo para empezar?</h2>
-    <p style="color:rgba(255,255,255,0.75);font-size:16px;margin:0 0 36px;line-height:1.7">Ya sea que quieras aprender algo nuevo o convertir tu expertise en ingresos — MeFácil es tu plataforma.</p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="https://academia.mefacil.com" target="_blank" rel="noopener noreferrer" class="btn-cta" style="font-size:15px;padding:16px 32px;background:#c4b400;color:#3a3300;box-shadow:0 4px 20px rgba(196,180,0,0.35)">🎓 Quiero educarme</a>
-      <a href="https://wa.me/573059234214?text=Hola%2C%20quiero%20enseñar%20en%20MeFácil" target="_blank" rel="noopener noreferrer" class="btn-cta" style="font-size:15px;padding:16px 32px;background:rgba(255,255,255,0.12);color:white;border-color:rgba(255,255,255,0.3)">🏆 Quiero enseñar</a>
+      <div class="faq-item">
+        <div class="faq-q"><span>¿Cómo me inscribo a un curso?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Escríbenos por WhatsApp o ingresa directamente a academia.mefacil.com. Tu entrenador te asigna acceso y en minutos ya estás dentro.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>¿Necesito experiencia previa para inscribirme?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>No. Cada entrenador define el nivel de su curso. Hay opciones para principiantes, intermedios y avanzados en cada área.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>¿Puedo enseñar en MeFácil si soy experto en mi campo?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Sí. No importa si eres técnico, tecnólogo, profesional o empírico con experiencia demostrable. Si tienes conocimiento real y estudiantes, te damos la plataforma. Solo pagas un mantenimiento anual sin comisiones.</p></div>
+      </div>
+      <div class="faq-item" style="border-bottom:none">
+        <div class="faq-q"><span>¿Los cursos incluyen certificado?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Sí. Al completar un curso recibes un certificado digital generado por la plataforma, firmado por tu entrenador y respaldado por ASSYST.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ░░ FOOTER ░░ -->
-<footer style="background:#0c3a57;padding:32px 24px">
+<!-- CTA FINAL -->
+<section style="padding:90px 24px;background:linear-gradient(135deg,#0c3a57,#1c79b4);text-align:center">
+  <div style="max-width:640px;margin:0 auto">
+    <div style="font-size:40px;margin-bottom:16px">🚀</div>
+    <h2 style="font-size:clamp(26px,3.5vw,40px);font-weight:900;color:white;margin:0 0 14px;letter-spacing:-.5px">¿Listo para empezar?</h2>
+    <p style="color:rgba(255,255,255,0.75);font-size:16px;margin:0 0 36px;line-height:1.7">Ya sea que quieras aprender algo nuevo o convertir tu expertise en ingresos — MeFácil es tu plataforma.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="https://academia.mefacil.com" target="_blank" rel="noopener noreferrer" class="btn" style="padding:16px 32px;background:#c4b400;color:#3a3300;box-shadow:0 4px 20px rgba(196,180,0,0.35)">🎓 Quiero educarme</a>
+      <a href="https://wa.me/573059234214?text=Hola%2C%20quiero%20enseñar%20en%20MeFácil" target="_blank" rel="noopener noreferrer" class="btn" style="padding:16px 32px;background:rgba(255,255,255,0.12);color:white;border-color:rgba(255,255,255,0.3)">🏆 Quiero enseñar</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0c3a57;padding:28px 24px">
   <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px">
     <div style="display:flex;align-items:center;gap:10px">
-      <div style="width:32px;height:32px;background:linear-gradient(135deg,#1c79b4,#0c3a57);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:15px;color:white;flex-shrink:0">M</div>
+      <div style="width:32px;height:32px;background:linear-gradient(135deg,#1c79b4,#0c3a57);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:15px;color:white">M</div>
       <span style="color:rgba(255,255,255,0.55);font-size:12px">© MeFácil · Cali, Colombia</span>
     </div>
     <span style="color:rgba(255,255,255,0.35);font-size:11px">Plataforma multidisciplinar de formación profesional</span>
   </div>
 </footer>
 
-<!-- Scroll animation observer -->
-<sc-script>
-  new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var d=e.target.dataset.delay||0;setTimeout(function(){e.target.classList.add('vis')},+d)}})},{threshold:0.12}).observe(document.querySelectorAll('.rev'));
-</sc-script>
-
-<sc-component name="LandingMefacil">
-  renderVals() {
-    const openFaq = this.state.openFaq;
-
-    const FAQS = [
-      { q: '¿Qué tipo de cursos puedo encontrar en MeFácil?', a: 'De todo. SST, Ambiental, Calidad, Gestión Humana, Seguridad Vial, Marketing, Tecnología, Administración y mucho más. Si un experto sabe algo y quiere enseñarlo, lo puede hacer aquí.' },
-      { q: '¿Cómo me inscribo a un curso?', a: 'Escríbenos por WhatsApp o ingresa directamente a academia.mefacil.com. Tu entrenador te asigna acceso y en minutos ya estás dentro.' },
-      { q: '¿Necesito experiencia previa para inscribirme?', a: 'No. Cada entrenador define el nivel de su curso. Hay opciones para principiantes, intermedios y avanzados en cada área.' },
-      { q: '¿Puedo enseñar en MeFácil si soy experto en mi campo?', a: 'Sí. No importa si eres técnico, tecnólogo, profesional o empírico con experiencia demostrable. Si tienes conocimiento real y estudiantes, te damos la plataforma. Solo pagas un mantenimiento anual sin comisiones.' },
-      { q: '¿Los cursos incluyen certificado?', a: 'Sí. Al completar un curso recibes un certificado digital generado por la plataforma, firmado por tu entrenador y respaldado por ASSYST.' },
-    ];
-
-    const faqs = FAQS.map((f, i) => ({
-      q: f.q,
-      a: f.a,
-      toggle: () => this.setState({ openFaq: openFaq === i ? null : i }),
-      iconStyle: openFaq === i
-        ? 'font-size:20px;font-weight:300;color:#1c79b4;transition:transform .2s;display:inline-block;transform:rotate(45deg)'
-        : 'font-size:20px;font-weight:300;color:#9ca3af;transition:transform .2s;display:inline-block;transform:rotate(0deg)',
-      bodyStyle: openFaq === i
-        ? 'max-height:300px;overflow:hidden;transition:max-height .35s ease'
-        : 'max-height:0;overflow:hidden;transition:max-height .35s ease'
-    }));
-
-    return { faqs };
-  }
-}
-</sc-component>
-
-</x-dc>
+<script>
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
 </body>
 </html>
