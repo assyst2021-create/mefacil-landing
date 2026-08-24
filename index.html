@@ -331,9 +331,11 @@ function elegir(modo) {
   if (modoActual === modo) return;
   modoActual = modo;
 
-  // Ocultar ambos paneles
-  document.getElementById('panel-aprender').className = 'content-panel';
-  document.getElementById('panel-ensenar').className = 'content-panel';
+  // Ocultar ambos paneles (resetear inline style también)
+  var pA = document.getElementById('panel-aprender');
+  var pE = document.getElementById('panel-ensenar');
+  pA.className = 'content-panel'; pA.style.display = 'none';
+  pE.className = 'content-panel'; pE.style.display = 'none';
 
   // Mostrar el elegido con animación
   setTimeout(function() {
