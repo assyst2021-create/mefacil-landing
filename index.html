@@ -368,6 +368,27 @@ function elegir(modo) {
   }
 }
 
+function deseleccionar() {
+  if (!modoActual) return;
+  modoActual = null;
+  var pA = document.getElementById('panel-aprender');
+  var pE = document.getElementById('panel-ensenar');
+  pA.className = 'content-panel'; pA.style.display = 'none';
+  pE.className = 'content-panel'; pE.style.display = 'none';
+  document.getElementById('sec-huellitas').style.display = 'none';
+  document.getElementById('sec-faq').style.display = 'none';
+  document.getElementById('sec-cta').style.display = 'none';
+  document.getElementById('btn-aprender').style.outline = 'none';
+  document.getElementById('btn-ensenar').style.outline = 'none';
+}
+
+// Click fuera de las tarjetas → deseleccionar
+document.getElementById('hero').addEventListener('click', function(e) {
+  if (!e.target.closest('#btn-aprender') && !e.target.closest('#btn-ensenar')) {
+    deseleccionar();
+  }
+});
+
 // Tabla comparativa
 var compareData = [
   ['Sin comisiones por venta', true, false],
