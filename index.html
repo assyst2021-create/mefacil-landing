@@ -402,6 +402,8 @@ function elegir(modo) {
     document.getElementById('sec-huellitas').style.display = 'block';
     document.getElementById('sec-faq').style.display = 'block';
     document.getElementById('sec-cta').style.display = 'block';
+    // FAQ según modo
+    renderFaqs(modo === 'aprender' ? faqsEstudiante : faqsEntrenador);
     // Scroll suave hacia el contenido
     setTimeout(function() {
       panel.scrollIntoView({behavior:'smooth', block:'start'});
@@ -464,51 +466,69 @@ compareData.forEach(function(row, i) {
   rowsEl.appendChild(el);
 });
 
-// FAQ
-var faqs = [
+// FAQ — dos conjuntos separados
+var faqsEntrenador = [
   ['¿Necesito ser profesional universitario para enseñar?', 'No. Si tienes conocimiento real y experiencia, puedes enseñarlo. Técnicos, tecnólogos, empíricos y profesionales son bienvenidos por igual.'],
   ['¿MeFácil se queda con algún porcentaje de mis ventas?', 'No. MeFácil no cobra comisión por ninguna venta que hagas. Tú cobras directamente a tus estudiantes y recibes el 100% del dinero. Solo pagas un mantenimiento anual fijo: $400.000 COP el primer año y $200.000 COP desde el segundo año.'],
   ['¿Los derechos de autor de mi contenido son míos?', 'Sí, siempre. Todo lo que publiques en MeFácil, tus videos, cursos, libros, podcasts y materiales, te pertenece al 100%. La plataforma nunca reclamará propiedad ni derechos sobre tu contenido. Tú eres el creador y el dueño.'],
-  ['¿Cuánto puedo ganar como entrenador?', 'Depende de ti: tú fijas el precio y decides quién entra. MeFácil no cobra comisión por venta, solo un mantenimiento anual fijo.'],
-  ['¿Cómo vendo mi libro o guía en MeFácil?', 'Desde tu panel subes el título, la portada, la descripción y el precio, y pegas el enlace de acceso (puede ser un PDF en Drive, un link de descarga o tu propia tienda). Tú decides a qué estudiantes les das acceso.'],
-  ['¿En qué formato debo tener mi libro o guía?', 'El más común es PDF, pero funciona con cualquier enlace: Google Drive, Dropbox, una tienda externa o cualquier página donde la persona pueda acceder al contenido.'],
-  ['¿Cómo publico mi podcast?', 'Pegas el link de tu episodio de Spotify, YouTube o Anchor y la plataforma lo muestra automáticamente con reproductor integrado. Si no usas esas plataformas, también puedes pegar un enlace directo de audio.'],
-  ['¿Necesito tener mi podcast en Spotify para publicarlo aquí?', 'No es obligatorio, pero sí recomendado porque el reproductor se integra automáticamente. Si aún no lo subes a ningún lado, puedes empezar solo con un enlace directo al archivo de audio.'],
+  ['¿Cuánto puedo ganar como entrenador?', 'Depende de ti: tú fijas el precio y decides quién entra. MeFácil no cobra comisión por venta, solo un mantenimiento anual fijo. Si tienes 10 estudiantes a $150.000 cada uno, recibes $1.500.000, completos.'],
+  ['¿Cómo empiezo a publicar mi primer curso?', 'Contáctanos por WhatsApp, activamos tu academia en minutos y te guiamos paso a paso. No necesitas saber de tecnología.'],
+  ['¿Mis estudiantes reciben certificado al terminar?', 'Sí. La plataforma genera un certificado digital firmado por ti cuando el estudiante completa el curso. Tú defines los requisitos de aprobación.'],
+  ['¿Puedo publicar también libros y podcasts?', 'Sí. Además de cursos, puedes subir guías en PDF, libros digitales y episodios de podcast, todo desde el mismo panel, con precio libre o gratuito.'],
+  ['¿Cómo vendo mi libro o guía en MeFácil?', 'Subes el título, portada, descripción y precio, y pegas el enlace de acceso (PDF en Drive, Dropbox o cualquier tienda). Tú decides a qué estudiantes les das acceso.'],
+  ['¿Cómo publico mi podcast?', 'Pegas el link de tu episodio de Spotify, YouTube o Anchor y la plataforma lo muestra con reproductor integrado. También funciona con enlace directo de audio.'],
   ['¿Puedo cobrar por unos episodios y dejar otros gratis?', 'Sí. Cada libro y cada episodio de podcast se marca individualmente como gratis o de pago, con el precio que tú definas.'],
-  ['¿Mis estudiantes reciben certificado al terminar?', 'Sí. La plataforma genera automáticamente un certificado digital firmado por ti cuando el estudiante completa el curso. Tú defines los requisitos de aprobación.'],
-  ['¿Puedo administrar mi academia desde el celular?', 'Sí. Tanto tú como tus estudiantes pueden acceder desde cualquier dispositivo. Incluso se puede instalar como app en el celular.'],
+  ['¿Puedo administrar mi academia desde el celular?', 'Sí. Puedes gestionar tu contenido, revisar el progreso de tus estudiantes y calificar tareas desde cualquier dispositivo. También se puede instalar como app.'],
 ];
+
+var faqsEstudiante = [
+  ['¿Cómo me inscribo a un curso?', 'Escríbenos por WhatsApp o entra directo a academia.mefacil.com. Tu entrenador te asigna el acceso y en minutos ya estás adentro.'],
+  ['¿Recibo un certificado al terminar?', 'Sí. Al completar el curso recibes un certificado digital firmado por tu entrenador y generado por la plataforma.'],
+  ['¿Puedo avanzar a mi propio ritmo?', 'Sí. Los cursos son 100% en línea y puedes avanzar cuando quieras. No hay horarios fijos ni fechas obligatorias para la mayoría de los módulos.'],
+  ['¿Necesito conocimientos previos para tomar un curso?', 'Depende del curso. Cada entrenador indica el nivel requerido en la descripción. Hay cursos desde cero y también para perfiles más avanzados.'],
+  ['¿Cómo funciona el pago del curso?', 'El precio lo fija tu entrenador. Tú le pagas directamente a él y, una vez confirmado el pago, tu entrenador te activa el acceso en la plataforma.'],
+  ['¿Qué pasa si no apruebo una evaluación?', 'Puedes volver a intentarla. Tu entrenador define cuántos intentos tienes y cuál es el puntaje mínimo para aprobar.'],
+  ['¿Puedo ver el contenido desde el celular?', 'Sí. La plataforma funciona perfectamente en cualquier dispositivo: computador, celular o tablet. Incluso la puedes instalar como app en tu celular.'],
+  ['¿Puedo hacer preguntas a mi entrenador?', 'Sí. Cada curso tiene un foro interno donde puedes hacer preguntas y tu entrenador te responde directamente.'],
+  ['¿Qué pasa si tengo dudas sobre el contenido del curso?', 'Algunos entrenadores tienen un Mentor IA configurado que responde tus preguntas al instante, disponible las 24 horas. Además, siempre puedes usar el foro del curso.'],
+  ['¿Los cursos tienen fecha de vencimiento?', 'Depende del entrenador. Algunos dan acceso indefinido, otros por tiempo limitado. Tu entrenador te lo indica al momento de inscribirte.'],
+];
+
 var faqEl = document.getElementById('faq-wrap');
-faqs.forEach(function(f, i) {
-  var item = document.createElement('div');
-  item.style.borderBottom = i < faqs.length-1 ? '1px solid #f1f5f9' : 'none';
-  item.innerHTML = '<div class="fq" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 28px;cursor:pointer;user-select:none;transition:background .15s">'
-    + '<span style="font-weight:700;font-size:15px;color:#101826">' + f[0] + '</span>'
-    + '<span class="fi" style="font-size:22px;color:#9ca3af;transition:transform .2s;flex-shrink:0;line-height:1">+</span>'
-    + '</div>'
-    + '<div class="fb" style="max-height:0;overflow:hidden;transition:max-height .35s ease">'
-    + '<p style="margin:0;font-size:14px;color:#4b5565;line-height:1.7;padding:0 28px 20px">' + f[1] + '</p>'
-    + '</div>';
-  var q = item.querySelector('.fq');
-  q.onmouseenter = function(){ q.style.background='rgba(28,121,180,.04)'; };
-  q.onmouseleave = function(){ q.style.background='none'; };
-  q.onclick = function() {
-    var open = item.getAttribute('data-open') === '1';
-    faqEl.querySelectorAll('[data-open="1"]').forEach(function(x){
-      x.setAttribute('data-open','0');
-      x.querySelector('.fb').style.maxHeight='0';
-      x.querySelector('.fi').style.transform='rotate(0)';
-      x.querySelector('.fi').style.color='#9ca3af';
-    });
-    if (!open) {
-      item.setAttribute('data-open','1');
-      item.querySelector('.fb').style.maxHeight='300px';
-      item.querySelector('.fi').style.transform='rotate(45deg)';
-      item.querySelector('.fi').style.color='#0b4ab3';
-    }
-  };
-  faqEl.appendChild(item);
-});
+
+function renderFaqs(lista) {
+  faqEl.innerHTML = '';
+  lista.forEach(function(f, i) {
+    var item = document.createElement('div');
+    item.style.borderBottom = i < lista.length-1 ? '1px solid #f1f5f9' : 'none';
+    item.innerHTML = '<div class="fq" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 28px;cursor:pointer;user-select:none;transition:background .15s">'
+      + '<span style="font-weight:700;font-size:15px;color:#101826">' + f[0] + '</span>'
+      + '<span class="fi" style="font-size:22px;color:#9ca3af;transition:transform .2s;flex-shrink:0;line-height:1">+</span>'
+      + '</div>'
+      + '<div class="fb" style="max-height:0;overflow:hidden;transition:max-height .35s ease">'
+      + '<p style="margin:0;font-size:14px;color:#4b5565;line-height:1.7;padding:0 28px 20px">' + f[1] + '</p>'
+      + '</div>';
+    var q = item.querySelector('.fq');
+    q.onmouseenter = function(){ q.style.background='rgba(28,121,180,.04)'; };
+    q.onmouseleave = function(){ q.style.background='none'; };
+    q.onclick = function() {
+      var open = item.getAttribute('data-open') === '1';
+      faqEl.querySelectorAll('[data-open="1"]').forEach(function(x){
+        x.setAttribute('data-open','0');
+        x.querySelector('.fb').style.maxHeight='0';
+        x.querySelector('.fi').style.transform='rotate(0)';
+        x.querySelector('.fi').style.color='#9ca3af';
+      });
+      if (!open) {
+        item.setAttribute('data-open','1');
+        item.querySelector('.fb').style.maxHeight='300px';
+        item.querySelector('.fi').style.transform='rotate(45deg)';
+        item.querySelector('.fi').style.color='#0b4ab3';
+      }
+    };
+    faqEl.appendChild(item);
+  });
+}
 </script>
 </body>
 </html>
